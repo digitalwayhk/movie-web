@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pwa
-        path: ./docs
+        path: ./dist
 
   build:
     name: Build
@@ -64,7 +64,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: normal
-        path: ./docs
+        path: ./dist
 
   release:
     name: Release
