@@ -10,7 +10,6 @@ node_modules
 
 # production
 /dist
-/docs
 dev-dist
 /stats.html
 
