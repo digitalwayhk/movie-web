@@ -23,6 +23,10 @@ const captioningPackages = [
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
+console.log('env', env);
+if (!env.VITE_APP_DOMAIN) {
+env.VITE_APP_DOMAIN = 'https://digitalwayhk.github.io/movie-web-build'
+}
   return {
     plugins: [
       million.vite({ auto: true, mute: true }),
