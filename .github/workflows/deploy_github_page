@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages Next
+
+on:
+  push:
+    branches:
+      - dev
+    # Review gh actions docs if you want to further define triggers, paths, etc
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.0
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+      - name: Build website
+        env:
+          COMMIT: ${{ github.sha }}
+        run: npm run build
+
+      - name: Publish
+        uses: cpina/github-action-push-to-another-repository@v1.3
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'docs'
+          destination-repository-username: 'digitalwayhk'
+          destination-repository-name: 'movie-web-build'
+          destination-github-username: 'dalveytech-vincent'
+          target-branch: 'main'
+          user-email: vincent@dalveytech.com
