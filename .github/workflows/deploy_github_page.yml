@@ -16,14 +16,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.10.0
-          cache: npm
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: Build website
         env:
           COMMIT: ${{ github.sha }}
-        run: npm run build
+        run: pnpm run build
 
       - name: Publish
         uses: cpina/github-action-push-to-another-repository@v1.3
