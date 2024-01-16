@@ -31,6 +31,7 @@ jobs:
       - name: Build website
         env:
           COMMIT: ${{ github.sha }}
+          VITE_CORS_PROXY_URL: https://digitalwayhk.github.io/movie-web-build
           VITE_APP_DOMAIN: https://digitalwayhk.github.io/movie-web-build
         run: pnpm run build:pwa
 
