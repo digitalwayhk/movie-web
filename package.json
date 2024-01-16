@@ -5,7 +5,7 @@
   "homepage": "https://movie-web.app",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir docs",
+    "build": "vite build",
     "build:pwa": "cross-env VITE_PWA_ENABLED=true vite build",
     "test": "vitest run",
     "preview": "vite preview",
